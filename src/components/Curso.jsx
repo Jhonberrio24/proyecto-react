@@ -1,8 +1,8 @@
-function Curso(props) {
+function Curso({ nombre, descripcion }) {
   return (
-    <div>
-      <h3>{props.titulo}</h3>
-      <p>{props.descripcion}</p>
+    <div className="curso-card">
+      <h3>{nombre}</h3>
+      <p>{descripcion}</p>
     </div>
   );
 }

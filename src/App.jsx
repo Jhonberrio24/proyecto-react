@@ -4,6 +4,10 @@ import Curso from './components/Curso';
 import Footer from './components/Footer';
 
 function App() {
+  function saludar() {
+    alert("¡Bienvenido al Centro Nacional Colombo Alemán!");
+  }
+
   return (
     <div>
       <Header />
@@ -11,6 +15,10 @@ function App() {
 
       <main id="inicio">
         <h2>Bienvenidos a nuestro portal de formación</h2>
+
+        <button onClick={saludar}>
+          Haz click aqui
+        </button>
 
         <section id="cursos">
           <h2>Nuestros cursos</h2>
@@ -32,6 +40,16 @@ function App() {
           <Curso 
             nombre="Diseño UX/UI"
             descripcion="Crea experiencias de usuario excepcionales" 
+          />
+
+          <Curso 
+            nombre="programacion con java" 
+            descripcion="aprende a desarrollar aplicaciones y soluciones mediante el lenguaje java" 
+          />
+
+          <Curso 
+            nombre="curso de python" 
+            descripcion="aprende a desarrollar aplicaciones mediante el entorno de python" 
           />
         </section>
 
