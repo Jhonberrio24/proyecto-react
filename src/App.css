@@ -19,11 +19,13 @@
 
 .hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .base,
   .framework,
   .vite {
-    inset-inline: 0;
     margin: 0 auto;
   }
 
@@ -33,17 +35,21 @@
     z-index: 0;
   }
 
+  /* Eliminamos las rotaciones 3D y dejamos posicionamiento plano y centrado */
   .framework,
   .vite {
     position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .framework {
     z-index: 1;
     top: 34px;
     height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
+    /* Sin transformaciones inclinadas */
   }
 
   .vite {
@@ -51,8 +57,7 @@
     top: 107px;
     height: 26px;
     width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
+    /* Sin transformaciones inclinadas */
   }
 }
 
