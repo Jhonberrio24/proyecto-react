@@ -4,40 +4,49 @@ function PresentacionAprendiz() {
     const [nombre, setNombre] = useState("");
     const [curso, setCurso] = useState("");
 
+    function manejarEnvio(evento) {
+        eventoinicializar = evento; // o evento.preventDefault()
+        evento.preventDefault();
+
+        alert(`¡Formulario enviado! Nombre: ${nombre}, Curso de interes:${curso}`);
+    }
+
     return (
         <div>
             <h2>Mi presentación</h2>
 
-            <label htmlFor="nombrePresentacion">Escribe tu nombre:</label>
-            <input
-                id="nombrePresentacion"
-                type="text"
-                value={nombre}
-                onChange={(evento) => setNombre(evento.target.value)}
-                placeholder="Ejemplo: Gabriel"
-            />
+            <form onSubmit={manejarEnvio}>
 
-            <br />
-            <br />
+                <label htmlFor="nombrePresentacion">Escribe tu nombre:</label>
 
-            <label htmlFor="cursoPresentacion">¿Qué curso te interesa?</label>
-            <input
-                id="cursoPresentacion"
-                type="text"
-                value={curso}
-                onChange={(evento) => setCurso(evento.target.value)}
-                placeholder="Ejemplo: React"
-            />
+                <input
+                    id="nombrePresentacion"
+                    type="text"
+                    value={nombre}
+                    onChange={(evento) => setNombre(evento.target.value)}
+                    placeholder="Ejemplo: Jhon"
+                />
 
-            <h3>Mis datos</h3>
+                <br />
+                <br />
 
-            <p>Mi nombre es: {nombre}</p>
+                <label htmlFor="cursoPresentacion">¿Qué curso te interesa?</label>
+                <input
+                    id="cursoPresentacion"
+                    type="text"
+                    value={curso}
+                    onChange={(evento) => setCurso(evento.target.value)}
+                    placeholder="Ejemplo: React"
+                />
 
-            <p>Me interesa aprender: {curso}</p>
+                <br />
+                <br />
+                <button type="submit">
+                    Enviar formulario
+                </button>
 
-            <p>
-                ¡Hola, {nombre}! Te interesa aprender {curso}.
-            </p>
+            </form>
+
         </div>
     );
 }
