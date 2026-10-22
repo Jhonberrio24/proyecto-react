@@ -200,22 +200,62 @@
 }
 
 .curso-card {
-  border: 1px solid #333;
-  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  background: var(--bg);
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
-.curso-card h3,
+.curso-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.curso-contenido {
+  text-align: left;
+}
+
+.curso-etiqueta {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.curso-card h3 {
+  margin: 4px 0;
+  color: var(--text-h);
+}
+
 .curso-card p {
-  margin: 0 0 4px;
+  margin: 0;
 }
 
 .curso-botones {
   display: flex;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 @media (max-width: 640px) {
   .lista-cursos {
     margin: 20px 16px;
+  }
+
+  .curso-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .curso-botones button {
+    flex: 1;
   }
 }

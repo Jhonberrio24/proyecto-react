@@ -1,23 +1,25 @@
-function Curso(props) {
+function Curso({ nombre, descripcion }) {
     function mostrarMensaje() {
-        alert(`¡Bienvenido al curso de ${props.nombre}!`);
+        alert(`¡Bienvenido al curso de ${nombre}!`);
     }
 
     function inscribirme() {
-        alert(`¡Te has inscrito al curso de ${props.nombre}!`);
+        alert(`¡Te has inscrito al curso de ${nombre}!`);
     }
 
     return (
-        <div className="curso-card">
-            <h3>Curso: {props.nombre}</h3>
-
-            <p>{props.descripcion}</p>
+        <article className="curso-card">
+            <div className="curso-contenido">
+                <span className="curso-etiqueta">Curso disponible</span>
+                <h3>{nombre}</h3>
+                <p>{descripcion}</p>
+            </div>
 
             <div className="curso-botones">
                 <button onClick={mostrarMensaje}>Ver información</button>
                 <button onClick={inscribirme}>Inscribirme</button>
             </div>
-        </div>
+        </article>
     );
 }
 
