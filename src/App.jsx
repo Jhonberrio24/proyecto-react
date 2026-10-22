@@ -1,74 +1,80 @@
-import Header from "./Components/Header";
-import Navbar from "./Components/Navbar";
-import Curso from './components/Curso';
-import Footer from "./Components/Footer";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 import RegistroAprendiz from "./components/RegistroAprendiz";
-import PresentacionAprendiz from "./Components/PresentacionAprendiz";
+import PresentacionAprendiz from "./components/PresentacionAprendiz";
+import Curso from "./components/Curso";
+import Footer from "./components/Footer";
+import "./App.css";
 
 function App() {
-  function saludar() {
-    alert("¡Bienvenido a nuestro portal de formación!");
-  }
+  const [mostrarCursos, setMostrarCursos] = useState(false);
+
+
+  const listaCursos = [
+    {
+      id: 1,
+      titulo: "Desarrollo Web",
+      descripcion: "Aprende a crear páginas web modernas y atractivas.",
+    },
+    {
+      id: 2,
+      titulo: "Bases de Datos",
+      descripcion: "Aprende a gestionar y manipular bases de datos.",
+    },
+    {
+      id: 3,
+      titulo: "Inteligencia Artificial",
+      descripcion: "Aprende a desarrollar soluciones basadas en inteligencia artificial.",
+    },
+    {
+      id: 4,
+      titulo: "programación con java",
+      descripcion: "aprende a desarrollar aplicaciones y soluciones mediante el lenguaje java",
+    },
+    {
+      id: 5,
+      titulo: "curso de python",
+      descripcion: "aprende a desarrollar aplicaciones mediante el entorno de python",
+    },
+  ];
+
   return (
-    <div>
+    <div className="App">
+      <Navbar />
       <Header />
-      <Navbar /> 
-      <RegistroAprendiz/>
+      <RegistroAprendiz />
 
-      <PresentacionAprendiz/>
+      <hr style={{ margin: "30px 0", borderColor: "#444" }} />
 
-      <main id="inicio">
-        <h2>Bienvenidos a nuestro portal de formación</h2>
-        
-        <button onclick={saludar}>Ver cursos</button>
+      <PresentacionAprendiz />
 
-        <section id="cursos">
+      <hr style={{ margin: "30px 0", borderColor: "#444" }} />
+
+
+      <div style={{ textAlign: "center", margin: "20px 0" }}>
+        <button
+          onClick={() => setMostrarCursos(!mostrarCursos)}
+          style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
+        >
+          {mostrarCursos ? "Ocultar cursos" : "Ver cursos"}
+        </button>
+      </div>
+
+
+      {mostrarCursos && (
+        <div style={{ margin: "20px auto", maxWidth: "600px", textAlign: "center" }}>
           <h2>Nuestros cursos</h2>
-          <p>
-            Ofrecemos una variedad de cursos para ayudarte a desarrollar tus
-            habilidades y alcanzar tus metas profesionales.
-          </p>
-
-          <Curso
-            nombre="Desarrollo Web"
-            descripcion="Aprende a crear páginas web modernas y atractivas."
-          />
-
-          <Curso
-            nombre="Bases de Datos"
-            descripcion="Aprende a gestionar y manipular bases de datos."
-          />
-
-          <Curso
-            nombre="Inteligencia Artificial"
-            descripcion="Aprende a desarrollar soluciones basadas en inteligencia artificial."
-          />
-          <Curso
-        nombre="programacion con java"
-        descripcion="aprende a desarrollar aplicaciones y soluciones mediante el lenguaje java"
-        />
-      <Curso
-        nombre="curso de python"
-        descripcion="aprende a desarrollar aplicaciones mediante el entorno de python"
-        />
-        </section>
-
-        <section id="nosotros">
-          <h2>Sobre nosotros</h2>
-          <p>
-            Somos un centro de formación comprometido con el desarrollo de
-            nuestros estudiantes y la excelencia educativa.
-          </p>
-        </section>
-
-        <section id="contacto">
-          <h2>Contacto</h2>
-          <p>
-            Puedes contactarnos a través de nuestro correo electrónico o número
-            de teléfono para más información sobre nuestros cursos.
-          </p>
-        </section>
-      </main>
+          {listaCursos.map((curso) => (
+            <Curso
+              key={curso.id}
+              nombre={curso.titulo}
+              titulo={curso.titulo}
+              descripcion={curso.descripcion}
+            />
+          ))}
+        </div>
+      )}
 
       <Footer />
     </div>
