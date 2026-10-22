@@ -187,3 +187,35 @@
     border-right-color: var(--border);
   }
 }
+
+.lista-cursos {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.lista-cursos > h2 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.curso-card {
+  border: 1px solid #333;
+  padding: 8px 12px;
+}
+
+.curso-card h3,
+.curso-card p {
+  margin: 0 0 4px;
+}
+
+.curso-botones {
+  display: flex;
+  gap: 4px;
+}
+
+@media (max-width: 640px) {
+  .lista-cursos {
+    margin: 20px 16px;
+  }
+}

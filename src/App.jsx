@@ -10,39 +10,44 @@ import "./App.css";
 function App() {
   const [mostrarCursos, setMostrarCursos] = useState(false);
 
-
   const listaCursos = [
     {
       id: 1,
-      titulo: "Desarrollo Web",
+      nombre: "Desarrollo Web",
       descripcion: "Aprende a crear páginas web modernas y atractivas.",
     },
     {
       id: 2,
-      titulo: "Bases de Datos",
+      nombre: "Bases de Datos",
       descripcion: "Aprende a gestionar y manipular bases de datos.",
     },
     {
       id: 3,
-      titulo: "Inteligencia Artificial",
+      nombre: "Inteligencia Artificial",
       descripcion: "Aprende a desarrollar soluciones basadas en inteligencia artificial.",
     },
     {
       id: 4,
-      titulo: "programación con java",
+      nombre: "programación con java",
       descripcion: "aprende a desarrollar aplicaciones y soluciones mediante el lenguaje java",
     },
     {
       id: 5,
-      titulo: "curso de python",
+      nombre: "curso de python",
       descripcion: "aprende a desarrollar aplicaciones mediante el entorno de python",
+    },
+    {
+      id: 6,
+      nombre: "HTML y CSS",
+      descripcion: "Aprende a crear páginas web.",
     },
   ];
 
   return (
     <div className="App">
-      <Navbar />
+      {/* Header va primero arriba del todo */}
       <Header />
+      <Navbar />
       <RegistroAprendiz />
 
       <hr style={{ margin: "30px 0", borderColor: "#444" }} />
@@ -50,7 +55,6 @@ function App() {
       <PresentacionAprendiz />
 
       <hr style={{ margin: "30px 0", borderColor: "#444" }} />
-
 
       <div style={{ textAlign: "center", margin: "20px 0" }}>
         <button
@@ -61,15 +65,13 @@ function App() {
         </button>
       </div>
 
-
       {mostrarCursos && (
-        <div style={{ margin: "20px auto", maxWidth: "600px", textAlign: "center" }}>
-          <h2>Nuestros cursos</h2>
+        <div className="lista-cursos">
+          <h2>NUESTROS CURSOS</h2>
           {listaCursos.map((curso) => (
             <Curso
               key={curso.id}
-              nombre={curso.titulo}
-              titulo={curso.titulo}
+              nombre={curso.nombre}
               descripcion={curso.descripcion}
             />
           ))}
