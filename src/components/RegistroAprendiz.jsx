@@ -34,12 +34,10 @@ function RegistroAprendiz() {
         />
         </div>
 
-        <button onClick={() => alert(`¡Bienvenido ${nombre}!`)}>Registrarse</button>
+        <button onClick={() => (`¡Bienvenido ${nombre}!`)}>Registrarse</button>
         
         
-        <p>Bienvenido {nombre}</p>
-        <p>¡Gracias por registrarte!</p>
-
+       
     </div>
   );
 }

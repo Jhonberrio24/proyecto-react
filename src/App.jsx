@@ -1,85 +1,102 @@
 import { useState } from "react";
-import Navbar from "./components/Navbar";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import RegistroAprendiz from "./components/RegistroAprendiz";
-import PresentacionAprendiz from "./components/PresentacionAprendiz";
-import Curso from "./components/Curso";
 import Footer from "./components/Footer";
+import GestionCursos from "./components/GestionCursos";
+import Inicio from "./pages/Inicio";
+import Cursos from "./pages/Cursos";
 import "./App.css";
 
 function App() {
-  const [mostrarCursos, setMostrarCursos] = useState(false);
-
-  const listaCursos = [
+  const [cursos, setCursos] = useState([
     {
       id: 1,
+      titulo: "Desarrollo Web",
       nombre: "Desarrollo Web",
       descripcion: "Aprende a crear páginas web modernas y atractivas.",
+      informacion: "HTML, CSS y JavaScript desde cero.",
+      inscritos: 0,
     },
     {
       id: 2,
+      titulo: "Bases de Datos",
       nombre: "Bases de Datos",
       descripcion: "Aprende a gestionar y manipular bases de datos.",
+      informacion: "Fundamentos de SQL y diseño relacional.",
+      inscritos: 0,
     },
     {
       id: 3,
+      titulo: "Inteligencia Artificial",
       nombre: "Inteligencia Artificial",
       descripcion: "Aprende a desarrollar soluciones basadas en inteligencia artificial.",
+      informacion: "Conceptos de Machine Learning y Python.",
+      inscritos: 0,
     },
     {
       id: 4,
-      nombre: "programación con java",
-      descripcion: "aprende a desarrollar aplicaciones y soluciones mediante el lenguaje java",
+      titulo: "Programación con Java",
+      nombre: "Programación con Java",
+      descripcion: "Aprende a desarrollar aplicaciones y soluciones mediante el lenguaje java.",
+      informacion: "Programación Orientada a Objetos.",
+      inscritos: 0,
     },
     {
       id: 5,
-      nombre: "curso de python",
-      descripcion: "aprende a desarrollar aplicaciones mediante el entorno de python",
+      titulo: "Curso de Python",
+      nombre: "Curso de Python",
+      descripcion: "Aprende a desarrollar aplicaciones mediante el entorno de python.",
+      informacion: "Sintaxis básica y proyectos prácticos.",
+      inscritos: 0,
     },
-    {
-      id: 6,
-      nombre: "HTML y CSS",
-      descripcion: "Aprende a crear páginas web.",
-    },
-  ];
+  ]);
+
+  const handleInscribir = (id) => {
+    setCursos(
+      cursos.map((curso) =>
+        curso.id === id ? { ...curso, inscritos: curso.inscritos + 1 } : curso
+      )
+    );
+  };
 
   return (
-    <div className="App">
-      {/* Header va primero arriba del todo */}
-      <Header />
-      <Navbar />
-      <RegistroAprendiz />
+    <BrowserRouter>
+      <div className="App">
+        <Header />
 
-      <hr style={{ margin: "30px 0", borderColor: "#444" }} />
+        <nav style={{
+          padding: "15px",
+          backgroundColor: "#161b22",
+          borderBottom: "1px solid #30363d",
+          textAlign: "center",
+          marginBottom: "20px"
+        }}>
+          <Link to="/" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
+            Inicio
+          </Link>
+          <Link to="/cursos" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
+            Cursos
+          </Link>
+          <Link to="/gestion" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
+            Gestión Cursos
+          </Link>
+          <Link to="/registro" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold" }}>
+            Registro
+          </Link>
+        </nav>
 
-      <PresentacionAprendiz />
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/cursos" element={<Cursos cursos={cursos} onInscribir={handleInscribir} />} />
+          <Route path="/gestion" element={<GestionCursos cursos={cursos} setCursos={setCursos} />} />
+          <Route path="/registro" element={<RegistroAprendiz />} />
+        </Routes>
 
-      <hr style={{ margin: "30px 0", borderColor: "#444" }} />
-
-      <div style={{ textAlign: "center", margin: "20px 0" }}>
-        <button
-          onClick={() => setMostrarCursos(!mostrarCursos)}
-          style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
-        >
-          {mostrarCursos ? "Ocultar cursos" : "Ver cursos"}
-        </button>
+        <hr style={{ margin: "30px 0", borderColor: "#30363d" }} />
+        <Footer />
       </div>
-
-      {mostrarCursos && (
-        <div className="lista-cursos">
-          <h2>NUESTROS CURSOS</h2>
-          {listaCursos.map((curso) => (
-            <Curso
-              key={curso.id}
-              nombre={curso.nombre}
-              descripcion={curso.descripcion}
-            />
-          ))}
-        </div>
-      )}
-
-      <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 
