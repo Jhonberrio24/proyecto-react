@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import GestionCursos from "./components/GestionCursos";
 import Inicio from "./pages/Inicio";
 import Cursos from "./pages/Cursos";
+import AcercaDe from "./pages/AcercaDe";
 import "./App.css";
 
 function App() {
@@ -81,8 +82,11 @@ function App() {
           <Link to="/gestion" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
             Gestión Cursos
           </Link>
-          <Link to="/registro" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold" }}>
+          <Link to="/registro" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
             Registro
+          </Link>
+          <Link to="/acerca-de" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold" }}>
+            Acerca de
           </Link>
         </nav>
 
@@ -91,6 +95,7 @@ function App() {
           <Route path="/cursos" element={<Cursos cursos={cursos} onInscribir={handleInscribir} />} />
           <Route path="/gestion" element={<GestionCursos cursos={cursos} setCursos={setCursos} />} />
           <Route path="/registro" element={<RegistroAprendiz />} />
+          <Route path="/acerca-de" element={<AcercaDe />} />
         </Routes>
 
         <hr style={{ margin: "30px 0", borderColor: "#30363d" }} />
