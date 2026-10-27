@@ -7,6 +7,12 @@ import GestionCursos from "./components/GestionCursos";
 import Inicio from "./pages/Inicio";
 import Cursos from "./pages/Cursos";
 import AcercaDe from "./pages/AcercaDe";
+import Usuarios from "./pages/Usuarios";
+import Aprendices from "./pages/Aprendices";
+import Instructores from "./pages/Instructores";
+import Fichas from "./pages/Fichas";
+import Competencias from "./pages/Competencias";
+import Evaluaciones from "./pages/Evaluaciones";
 import "./App.css";
 
 function App() {
@@ -67,27 +73,27 @@ function App() {
         <Header />
 
         <nav style={{
-          padding: "15px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "12px",
+          flexWrap: "wrap",
+          padding: "15px 20px",
           backgroundColor: "#161b22",
           borderBottom: "1px solid #30363d",
-          textAlign: "center",
           marginBottom: "20px"
         }}>
-          <Link to="/" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
-            Inicio
-          </Link>
-          <Link to="/cursos" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
-            Cursos
-          </Link>
-          <Link to="/gestion" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
-            Gestión Cursos
-          </Link>
-          <Link to="/registro" style={{ color: "#ffffff", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}>
-            Registro
-          </Link>
-          <Link to="/acerca-de" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold" }}>
-            Acerca de
-          </Link>
+          <Link to="/" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Inicio</Link>
+          <Link to="/cursos" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Cursos</Link>
+          <Link to="/gestion" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Gestión Cursos</Link>
+          <Link to="/registro" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Registro</Link>
+          <Link to="/usuarios" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Usuarios</Link>
+          <Link to="/aprendices" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Aprendices</Link>
+          <Link to="/instructores" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Instructores</Link>
+          <Link to="/fichas" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Fichas</Link>
+          <Link to="/competencias" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Competencias</Link>
+          <Link to="/evaluaciones" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Evaluaciones</Link>
+          <Link to="/acerca-de" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Acerca de</Link>
         </nav>
 
         <Routes>
@@ -95,6 +101,15 @@ function App() {
           <Route path="/cursos" element={<Cursos cursos={cursos} onInscribir={handleInscribir} />} />
           <Route path="/gestion" element={<GestionCursos cursos={cursos} setCursos={setCursos} />} />
           <Route path="/registro" element={<RegistroAprendiz />} />
+          <Route path="/usuarios" element={<Usuarios />} />
+
+         
+          <Route path="/aprendices" element={<Aprendices />} />
+          <Route path="/instructores" element={<Instructores />} />
+          <Route path="/fichas" element={<Fichas />} />
+          <Route path="/competencias" element={<Competencias />} />
+          <Route path="/evaluaciones" element={<Evaluaciones />} />
+
           <Route path="/acerca-de" element={<AcercaDe />} />
         </Routes>
 
