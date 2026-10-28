@@ -14,6 +14,7 @@ import Fichas from "./pages/Fichas";
 import Competencias from "./pages/Competencias";
 import Evaluaciones from "./pages/Evaluaciones";
 import "./App.css";
+import RegistroAprendizApi from "./pages/RegistroAprendizApi";
 
 function App() {
   const [cursos, setCursos] = useState([
@@ -87,6 +88,7 @@ function App() {
           <Link to="/cursos" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Cursos</Link>
           <Link to="/gestion" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Gestión Cursos</Link>
           <Link to="/registro" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Registro</Link>
+          <Link to="/registro-api" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Registro API</Link>
           <Link to="/usuarios" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Usuarios</Link>
           <Link to="/aprendices" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Aprendices</Link>
           <Link to="/instructores" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "bold", fontSize: "0.9rem" }}>Instructores</Link>
@@ -101,9 +103,9 @@ function App() {
           <Route path="/cursos" element={<Cursos cursos={cursos} onInscribir={handleInscribir} />} />
           <Route path="/gestion" element={<GestionCursos cursos={cursos} setCursos={setCursos} />} />
           <Route path="/registro" element={<RegistroAprendiz />} />
+          <Route path="/registro-api" element={<RegistroAprendizApi />} />
           <Route path="/usuarios" element={<Usuarios />} />
 
-         
           <Route path="/aprendices" element={<Aprendices />} />
           <Route path="/instructores" element={<Instructores />} />
           <Route path="/fichas" element={<Fichas />} />
